@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+  <title>display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1e3a8a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 8px;
+      vertical-align: top;
+    }
+    td:first-child {
+      font-weight: bold;
+      width: 50%;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto 0;
+    }
+    button:hover {
+      background: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Payroll Computation</h2>
+    <table>
+      <tr><td>ID Number:</td><td id="idnum"></td></tr>
+      <tr><td>Last Name:</td><td id="lastname"></td></tr>
+      <tr><td>First Name:</td><td id="firstname"></td></tr>
+      <tr><td>Middle Name:</td><td id="middlename"></td></tr>
+      <tr><td>Position:</td><td id="position"></td></tr>
+      <tr><td>Daily Rate:</td><td id="rate"></td></tr>
+      <tr><td>Days Worked:</td><td id="days"></td></tr>
+      <tr><td>Gross Pay:</td><td id="gross"></td></tr>
+      <tr><td>SSS (5%):</td><td id="sss"></td></tr>
+      <tr><td>Pag-ibig (3%):</td><td id="pagibig"></td></tr>
+      <tr><td>PhilHealth (2%):</td><td id="philhealth"></td></tr>
+      <tr><td>Tax (5%):</td><td id="tax"></td></tr>
+      <tr><td>Total Deductions:</td><td id="totalDeduction"></td></tr>
+      <tr><td>Net Pay:</td><td id="net"></td></tr>
+    </table>
+    <button onclick="goBack()">Back</button>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("payrollData"));
+    if (data) {
+      document.getElementById("idnum").textContent = data.idnum;
+      document.getElementById("lastname").textContent = data.lastname;
+      document.getElementById("firstname").textContent = data.firstname;
+      document.getElementById("middlename").textContent = data.middlename;
+      document.getElementById("position").textContent = data.position;
+      document.getElementById("rate").textContent = "₱" + data.rate.toFixed(2);
+      document.getElementById("days").textContent = data.days;
+      document.getElementById("gross").textContent = "₱" + data.gross.toFixed(2);
+      document.getElementById("sss").textContent = "₱" + data.sss.toFixed(2);
+      document.getElementById("pagibig").textContent = "₱" + data.pagibig.toFixed(2);
+      document.getElementById("philhealth").textContent = "₱" + data.philhealth.toFixed(2);
+      document.getElementById("tax").textContent = "₱" + data.tax.toFixed(2);
+      document.getElementById("totalDeduction").textContent = "₱" + data.totalDeduction.toFixed(2);
+      document.getElementById("net").textContent = "₱" + data.net.toFixed(2);
+    }
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
